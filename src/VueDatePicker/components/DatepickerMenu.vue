@@ -32,7 +32,7 @@
                         :key="i"
                         :style="preset.style || {}"
                         class="dp__preset_range"
-                        @click="presetDateRange(preset.range, !!preset.slot)"
+                        @click="$emit('preset-range-selected', preset); presetDateRange(preset.range, !!preset.slot)"
                     >
                         <template v-if="preset.slot">
                             <slot
@@ -201,6 +201,7 @@
         'time-picker-open',
         'time-picker-close',
         'am-pm-change',
+        'preset-range-selected',
     ]);
     const props = defineProps({
         openOnTop: { type: Boolean as PropType<boolean>, default: false },
